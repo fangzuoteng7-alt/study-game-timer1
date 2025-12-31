@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>勉強→ゲーム タイマー</title>
+
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#111111">
+
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h2>📚 勉強した時間</h2>
+  <div id="study" class="time">0.0</div>
+
+  <h2>🎮 ゲーム残り時間</h2>
+  <div id="game" class="time game">0.0</div>
+
+  <div class="rate">
+    勉強 → ゲーム倍率：
+    <span id="rateValue">1.0</span> 倍
+    <input type="range" id="rate" min="0.5" max="3" step="0.1" value="1">
+  </div>
+
+  <div class="bonus">
+    🏆 連続勉強：<span id="streak">0</span> 回  
+    ボーナス：+<span id="bonusRate">0.0</span>
+  </div>
+
+  <div class="buttons">
+    <button id="studyBtn">勉強</button>
+    <button id="gameBtn">ゲーム</button>
+    <button id="stopBtn">停止</button>
+    <button id="resetBtn">リセット</button>
+  </div>
+
+  <h3>📊 勉強ログ</h3>
+  <ul id="log"></ul>
+
+  <canvas id="studyChart" height="200"></canvas>
+</div>
+
+<script src="script.js" defer></script>
+
+<script>
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("service-worker.js");
+}
+</script>
+
+</body>
+</html>
